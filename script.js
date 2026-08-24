@@ -9,6 +9,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var projectGrid = document.getElementById("projectGrid");
+  if (projectGrid) {
+    var storedProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
+    for (var p = 0; p < storedProjects.length; p++) {
+      var item = storedProjects[p];
+      var newCard = document.createElement("article");
+      newCard.className = "project-card searchable-project";
+      newCard.setAttribute("data-category", item.category);
+
+      newCard.innerHTML = 
+        '<div class="project-image">' +
+          '<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Submitted project">' +
+        '</div>' +
+        '<div class="card-content">' +
+          '<span class="tag">' + item.category + '</span>' +
+          '<h2>' + item.title + '</h2>' +
+          '<p>' + item.description + '</p>' +
+          '<p class="creator">By ' + item.creator + '</p>' +
+        '</div>';
+
+      projectGrid.appendChild(newCard);
+    }
+  }
+
   var filterButtons = document.querySelectorAll(".filter-button");
   var searchInput = document.getElementById("projectSearch");
   var noResults = document.getElementById("noResults");
@@ -119,9 +143,25 @@ document.addEventListener("DOMContentLoaded", function () {
         message.textContent = "Please fill in all required fields.";
         message.style.color = "#b42318";
       } else {
-        message.textContent = "Project submitted successfully!";
+        message.textContent = "Project submitted successfully! Redirecting to Explore...";
         message.style.color = "#16704b";
+
+        var newProject = {
+          title: title,
+          creator: creator,
+          category: category,
+          description: description
+        };
+
+        var existingProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
+        existingProjects.push(newProject);
+        localStorage.setItem("userProjects", JSON.stringify(existingProjects));
+
         submitForm.reset();
+
+        setTimeout(function () {
+          window.location.href = "explore.html";
+        }, 1500);
       }
     });
   }
