@@ -17,17 +17,21 @@ document.addEventListener("DOMContentLoaded", function () {
       var newCard = document.createElement("article");
       newCard.className = "project-card searchable-project";
       newCard.setAttribute("data-category", item.category);
-      newCard.setAttribute("data-name", item.title);
-      newCard.setAttribute("data-creator", item.creator);
+
+      var imgSrc = item.image ? item.image : "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80";
+      var linkMarkup = item.link ? '<p><a href="' + item.link + '" target="_blank" style="color: #0066cc; text-decoration: underline;">View Project Link →</a></p>' : '';
+      var fileMarkup = item.fileName ? '<p style="font-size: 0.85rem; color: #555;">📁 Attached: ' + item.fileName + '</p>' : '';
 
       newCard.innerHTML = 
         '<div class="project-image">' +
-          '<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Submitted project">' +
+          '<img src="' + imgSrc + '" alt="Submitted project">' +
         '</div>' +
         '<div class="card-content">' +
           '<span class="tag">' + item.category + '</span>' +
           '<h2>' + item.title + '</h2>' +
           '<p>' + item.description + '</p>' +
+          linkMarkup +
+          fileMarkup +
           '<p class="creator">By ' + item.creator + '</p>' +
         '</div>';
 
@@ -79,6 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
         noResults.hidden = true;
       }
     }
+  }
+
+  if (projectGrid) {
+    filterProjects();
   }
 
   for (var k = 0; k < filterButtons.length; k++) {
@@ -138,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var title = document.getElementById("projectTitle").value;
       var creator = document.getElementById("creatorName").value;
       var category = document.getElementById("category").value;
+      var link = document.getElementById("projectLink").value;
+      var fileInput = document.getElementById("projectFile");
       var description = document.getElementById("description").value;
       var message = document.getElementById("submitMessage");
 
@@ -148,22 +158,40 @@ document.addEventListener("DOMContentLoaded", function () {
         message.textContent = "Project submitted successfully! Redirecting to Explore...";
         message.style.color = "#16704b";
 
-        var newProject = {
-          title: title,
-          creator: creator,
-          category: category,
-          description: description
-        };
+        var fileName = fileInput && fileInput.files[0] ? fileInput.files[0].name : "";
+        var fileIsImage = fileInput && fileInput.files[0] && fileInput.files[0].type.startsWith("image/");
 
-        var existingProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
-        existingProjects.push(newProject);
-        localStorage.setItem("userProjects", JSON.stringify(existingProjects));
+        function saveAndRedirect(imageURL) {
+          var newProject = {
+            title: title,
+            creator: creator,
+            category: category,
+            link: link,
+            fileName: fileName,
+            image: imageURL,
+            description: description
+          };
 
-        submitForm.reset();
+          var existingProjects = JSON.parse(localStorage.getItem("userProjects")) || [];
+          existingProjects.push(newProject);
+          localStorage.setItem("userProjects", JSON.stringify(existingProjects));
 
-        setTimeout(function () {
-          window.location.href = "explore.html";
-        }, 1500);
+          submitForm.reset();
+
+          setTimeout(function () {
+            window.location.href = "explore.html";
+          }, 1200);
+        }
+
+        if (fileIsImage) {
+          var reader = new FileReader();
+          reader.onload = function (event) {
+            saveAndRedirect(event.target.result);
+          };
+          reader.readAsDataURL(fileInput.files[0]);
+        } else {
+          saveAndRedirect("");
+        }
       }
     });
   }
