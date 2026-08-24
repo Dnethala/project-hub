@@ -1,5 +1,4 @@
 ddocument.addEventListener("DOMContentLoaded", function () {
-  // Navigation Menu Toggle
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
@@ -9,7 +8,6 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Project Filter & Search Setup
   const filterButtons = document.querySelectorAll(".filter-button");
   const projects = document.querySelectorAll(".searchable-project");
   const searchInput = document.getElementById("projectSearch");
@@ -19,7 +17,6 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     const searchValue = searchInput ? searchInput.value.toLowerCase().trim() : "";
     let activeCategory = "All";
 
-    // Check which filter button is currently selected
     for (let i = 0; i < filterButtons.length; i++) {
       if (filterButtons[i].classList.contains("active")) {
         activeCategory = filterButtons[i].getAttribute("data-filter");
@@ -65,12 +62,10 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Search Bar Event Listener
   if (searchInput) {
     searchInput.addEventListener("keyup", filterProjects);
   }
 
-  // Sign In Form Validation
   const signInForm = document.getElementById("signInForm");
   if (signInForm) {
     signInForm.addEventListener("submit", function (e) {
@@ -105,7 +100,6 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Submit Form Validation
   const submitForm = document.getElementById("submitForm");
   if (submitForm) {
     submitForm.addEventListener("submit", function (e) {
