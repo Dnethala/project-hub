@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Work | ProjectHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="index.html">ProjectHub</a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a class="nav-button active-button" href="submit.html">Submit Work</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="form-page">
+    <section class="form-card wide">
+      <p class="eyebrow">Submission Form</p>
+      <h1>Submit a project</h1>
+      <p class="form-intro">Fill out the basic information about your project below to add it to the directory.</p>
+      <form id="submitForm" novalidate>
+        <div class="two-column">
+          <div class="form-group">
+            <label for="projectTitle">Project title</label>
+            <input id="projectTitle" name="projectTitle" type="text" required maxlength="80">
+          </div>
+          <div class="form-group">
+            <label for="creatorName">Your name</label>
+            <input id="creatorName" name="creatorName" type="text" required maxlength="60">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option>Technology</option>
+            <option>Art</option>
+            <option>Writing</option>
+            <option>Design</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Short description</label>
+          <textarea id="description" name="description" rows="5" required maxlength="500" placeholder="Describe what tools you used or what the project does."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projectLink">Project link (GitHub, Figma, Live Site)</label>
+          <input id="projectLink" name="projectLink" type="url" placeholder="https://example.com">
+        </div>
+        <button class="button primary" type="submit">Submit Project</button>
+        <p class="form-message" id="submitMessage"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>ProjectHub</strong><p>A simple student work archive.</p></div>
+      <p>© 2026 ProjectHub.</p>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

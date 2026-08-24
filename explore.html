@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Projects | ProjectHub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="index.html">ProjectHub</a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="explore.html">Explore</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a class="nav-button" href="submit.html">Submit Work</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Project Directory</p>
+        <h1>Explore student work</h1>
+        <p>Search by project name or creator, or filter by category below.</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="explore-controls">
+        <div class="search-box">
+          <input type="search" id="projectSearch" placeholder="Search by title or creator...">
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-button active" data-filter="All">All</button>
+          <button class="filter-button" data-filter="Technology">Technology</button>
+          <button class="filter-button" data-filter="Art">Art</button>
+          <button class="filter-button" data-filter="Writing">Writing</button>
+          <button class="filter-button" data-filter="Design">Design</button>
+        </div>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card searchable-project" data-category="Technology" data-name="StudyTrack" data-creator="Allen S.">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Coding project setup">
+          </div>
+          <div class="card-content">
+            <span class="tag">Technology</span>
+            <h2>StudyTrack</h2>
+            <p>A simple weekly schedule tracker built with plain JavaScript and HTML5.</p>
+            <p class="creator">By Allen S.</p>
+          </div>
+        </article>
+
+        <article class="project-card searchable-project" data-category="Art" data-name="City After Rain" data-creator="Caden C.">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Digital art illustration">
+          </div>
+          <div class="card-content">
+            <span class="tag">Art</span>
+            <h2>City After Rain</h2>
+            <p>A short series of digital environment paintings made in Photoshop.</p>
+            <p class="creator">By Caden C.</p>
+          </div>
+        </article>
+
+        <article class="project-card searchable-project" data-category="Design" data-name="Focus Mobile UI" data-creator="Tucker H.">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Mobile app wireframe design">
+          </div>
+          <div class="card-content">
+            <span class="tag">Design</span>
+            <h2>Focus Mobile UI</h2>
+            <p>A low-fidelity mobile wireframe concept focused on minimal notifications.</p>
+            <p class="creator">By Tucker H.</p>
+          </div>
+        </article>
+      </div>
+      <p class="empty-message" id="noResults" hidden>No projects matched your search.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>ProjectHub</strong><p>A simple student work archive.</p></div>
+      <p>© 2026 ProjectHub.</p>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

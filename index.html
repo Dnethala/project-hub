@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProjectHub | Student Work Showcase</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="index.html">ProjectHub</a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a class="nav-button" href="submit.html">Submit Work</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div>
+          <p class="eyebrow">Student Showcase</p>
+          <h1>Share what you’ve been working on.</h1>
+          <p class="hero-text">ProjectHub is a place for students to post course projects, side builds, and creative work in one clean gallery.</p>
+          <div class="hero-buttons">
+            <a class="button primary" href="explore.html">Browse Projects</a>
+            <a class="button secondary" href="submit.html">Submit Your Work</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <span class="hero-icon">✦</span>
+          <h2>Built by students, for students.</h2>
+          <p>Get feedback, find collaborators, or just keep a running log of your favorite projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Recent Activity</p>
+          <h2>Latest uploads</h2>
+        </div>
+        <a href="explore.html">View all →</a>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Coding project setup">
+          </div>
+          <div class="card-content">
+            <span class="tag">Technology</span>
+            <h3>StudyTrack</h3>
+            <p>A simple weekly schedule tracker built with plain JavaScript and HTML5.</p>
+            <p class="creator">By Allen S.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80" alt="Digital art illustration">          </div>
+          <div class="card-content">
+            <span class="tag">Art</span>
+            <h3>City After Rain</h3>
+            <p>A short series of digital environment paintings made in Photoshop.</p>
+            <p class="creator">By Caden C.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Mobile app wireframe design">
+          </div>
+          <div class="card-content">
+            <span class="tag">Design</span>
+            <h3>Focus Mobile UI</h3>
+            <p>A low-fidelity mobile wireframe concept focused on minimal notifications.</p>
+            <p class="creator">By Tucker H.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section categories-section">
+      <div class="container">
+        <div class="center-heading">
+          <p class="eyebrow">Categories</p>
+          <h2>Find projects by type</h2>
+          <p>Filter work depending on what you’re interested in looking through.</p>
+        </div>
+        <div class="category-grid">
+          <a href="explore.html" class="category-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=300&q=80" alt="Technology category" class="category-img">
+            <strong>Technology</strong>
+            <small>Apps, scripts & sites</small>
+          </a>
+          <a href="explore.html" class="category-card">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=300&q=80" alt="Art category" class="category-img">
+            <strong>Art</strong>
+            <small>Digital & traditional</small>
+          </a>
+          <a href="explore.html" class="category-card">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=300&q=80" alt="Writing category" class="category-img">
+            <strong>Writing</strong>
+            <small>Essays & creative prose</small>
+          </a>
+          <a href="explore.html" class="category-card">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=300&q=80" alt="Design category" class="category-img">
+            <strong>Design</strong>
+            <small>UI/UX & graphic design</small>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>ProjectHub</strong><p>A simple student work archive.</p></div>
+      <p>© 2026 ProjectHub.</p>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
