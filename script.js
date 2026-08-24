@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var newCard = document.createElement("article");
       newCard.className = "project-card searchable-project";
       newCard.setAttribute("data-category", item.category);
+      newCard.setAttribute("data-name", item.title);
+      newCard.setAttribute("data-creator", item.creator);
 
       newCard.innerHTML = 
         '<div class="project-image">' +
