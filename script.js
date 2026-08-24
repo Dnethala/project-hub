@@ -1,6 +1,7 @@
-ddocument.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", function () {
+  
+  var menuToggle = document.getElementById("menuToggle");
+  var navLinks = document.getElementById("navLinks");
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", function () {
@@ -8,42 +9,45 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const filterButtons = document.querySelectorAll(".filter-button");
-  const projects = document.querySelectorAll(".searchable-project");
-  const searchInput = document.getElementById("projectSearch");
-  const noResults = document.getElementById("noResults");
+  var filterButtons = document.querySelectorAll(".filter-button");
+  var searchInput = document.getElementById("projectSearch");
+  var noResults = document.getElementById("noResults");
 
   function filterProjects() {
-    const searchValue = searchInput ? searchInput.value.toLowerCase().trim() : "";
-    let activeCategory = "All";
+    var searchValue = "";
+    if (searchInput) {
+      searchValue = searchInput.value.toLowerCase().trim();
+    }
 
-    for (let i = 0; i < filterButtons.length; i++) {
+    var activeCategory = "All";
+    for (var i = 0; i < filterButtons.length; i++) {
       if (filterButtons[i].classList.contains("active")) {
         activeCategory = filterButtons[i].getAttribute("data-filter");
       }
     }
 
-    let count = 0;
+    var projects = document.querySelectorAll(".project-card");
+    var visibleCount = 0;
 
-    for (let i = 0; i < projects.length; i++) {
-      const project = projects[i];
-      const category = project.getAttribute("data-category");
-      const title = project.getAttribute("data-name").toLowerCase();
-      const creator = (project.getAttribute("data-creator") || "").toLowerCase();
+    for (var j = 0; j < projects.length; j++) {
+      var project = projects[j];
       
-      const matchesCategory = (activeCategory === "All" || category === activeCategory);
-      const matchesSearch = (searchValue === "" || title.includes(searchValue) || creator.includes(searchValue));
+      var category = project.getAttribute("data-category");
+      var cardText = project.textContent.toLowerCase();
+
+      var matchesCategory = (activeCategory === "All" || category === activeCategory);
+      var matchesSearch = (searchValue === "" || cardText.indexOf(searchValue) !== -1);
 
       if (matchesCategory && matchesSearch) {
         project.style.display = "block";
-        count++;
+        visibleCount = visibleCount + 1;
       } else {
         project.style.display = "none";
       }
     }
 
     if (noResults) {
-      if (count === 0) {
+      if (visibleCount === 0) {
         noResults.hidden = false;
       } else {
         noResults.hidden = true;
@@ -51,11 +55,10 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Handle Category Button Clicks
-  for (let i = 0; i < filterButtons.length; i++) {
-    filterButtons[i].addEventListener("click", function () {
-      for (let j = 0; j < filterButtons.length; j++) {
-        filterButtons[j].classList.remove("active");
+  for (var k = 0; k < filterButtons.length; k++) {
+    filterButtons[k].addEventListener("click", function () {
+      for (var m = 0; m < filterButtons.length; m++) {
+        filterButtons[m].classList.remove("active");
       }
       this.classList.add("active");
       filterProjects();
@@ -66,21 +69,22 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     searchInput.addEventListener("keyup", filterProjects);
   }
 
-  const signInForm = document.getElementById("signInForm");
+  var signInForm = document.getElementById("signInForm");
   if (signInForm) {
     signInForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const emailError = document.getElementById("emailError");
-      const passwordError = document.getElementById("passwordError");
-      const message = document.getElementById("signInMessage");
+      
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var emailError = document.getElementById("emailError");
+      var passwordError = document.getElementById("passwordError");
+      var message = document.getElementById("signInMessage");
 
       emailError.textContent = "";
       passwordError.textContent = "";
       message.textContent = "";
 
-      let hasError = false;
+      var hasError = false;
 
       if (email.trim() === "") {
         emailError.textContent = "Please enter your email.";
@@ -92,7 +96,7 @@ ddocument.addEventListener("DOMContentLoaded", function () {
         hasError = true;
       }
 
-      if (!hasError) {
+      if (hasError === false) {
         message.textContent = "Sign in successful!";
         message.style.color = "#16704b";
         signInForm.reset();
@@ -100,15 +104,16 @@ ddocument.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const submitForm = document.getElementById("submitForm");
+  var submitForm = document.getElementById("submitForm");
   if (submitForm) {
     submitForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      const title = document.getElementById("projectTitle").value;
-      const creator = document.getElementById("creatorName").value;
-      const category = document.getElementById("category").value;
-      const description = document.getElementById("description").value;
-      const message = document.getElementById("submitMessage");
+      
+      var title = document.getElementById("projectTitle").value;
+      var creator = document.getElementById("creatorName").value;
+      var category = document.getElementById("category").value;
+      var description = document.getElementById("description").value;
+      var message = document.getElementById("submitMessage");
 
       if (title.trim() === "" || creator.trim() === "" || category === "" || description.trim() === "") {
         message.textContent = "Please fill in all required fields.";
@@ -120,4 +125,5 @@ ddocument.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
 });
